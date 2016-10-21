@@ -16,8 +16,9 @@ SEregionArray=['PORTUGAL','GREECE','ITALY','SPAIN','CROATIA','ALBANIA'];
 fatArray=[0,0,0];
 carbArray=[0,0,0];
 proteinArray=[0,0,0];
-writeStream.write('[');
 
+writeStream.write('[');
+/*---Call back function to read and process a line ----*/
 var lineReadFunction =function(line){
   var arr=line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
   if(lineIndex==0) {
@@ -36,7 +37,6 @@ var lineReadFunction =function(line){
   }
   else {
     var countryName=arr[indexArr[0]].toUpperCase();
-
     if(NEregionArray.indexOf(countryName)>-1)
     {
       if(arr[indexArr[1]]=="")
@@ -88,10 +88,11 @@ var lineReadFunction =function(line){
    else
    proteinArray[2]+=parseFloat(arr[indexArr[3]]);
   }
-  }
+}//else ends
 }//lineReadFunction ends
-
+/*--------line event----*/
 rlemitter.on("line",lineReadFunction);
+/*--------close event----*/
 rlemitter.on("close",function(){
    sep="";
   for(i=0;i<RegionArray.length;i++)

@@ -7,14 +7,17 @@ var rlemitter=readline.createInterface(
   //  output:fs.createWriteStream("Graph1.json")
   }
 );
+/*---gloabally declared----*/
 lineIndex=0;
 indexArr=[];
 countryArray=['NETHERLANDS','UNITED KINGDOM','FRANCE','GERMANY','SPAIN'];
 sugarArray=[0,0,0,0,0];
 saltArray=[0,0,0,0,0];
-writeStream.write('[');
 
+writeStream.write('[');
+/*---Call back function to read and process a line ----*/
 var lineReadFunction =function(line){
+  console.log("Inside asyn function");
   var arr=line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
   if(lineIndex==0) {
     for(i=0;i<arr.length;i++)
@@ -45,10 +48,12 @@ var lineReadFunction =function(line){
     }
   }
 }//lineReadFunction ends
-
+/*--------line event----*/
 rlemitter.on("line",lineReadFunction);
+console.log("After lineRead");
+/*--------close event----*/
 rlemitter.on("close",function(){
-   sep="";
+  sep="";
   for(i=0;i<countryArray.length;i++)
   {
     var ob={
