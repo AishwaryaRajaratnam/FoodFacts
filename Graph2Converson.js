@@ -4,7 +4,7 @@ var writeStream = fs.createWriteStream("Graph2.json")
 var rlemitter=readline.createInterface(
   {
     input:fs.createReadStream("FoodFacts.csv"),
-  //  output:fs.createWriteStream("Graph1.json")
+    //  output:fs.createWriteStream("Graph1.json")
   }
 );
 lineIndex=0;
@@ -49,52 +49,52 @@ var lineReadFunction =function(line){
       else
       carbArray[0]+=parseFloat(arr[indexArr[2]]);
 
-     if(arr[indexArr[3]]=="")
-     proteinArray[0]+=0;
-     else
-     proteinArray[0]+=parseFloat(arr[indexArr[3]]);
+      if(arr[indexArr[3]]=="")
+      proteinArray[0]+=0;
+      else
+      proteinArray[0]+=parseFloat(arr[indexArr[3]]);
     }
-  else if(CEregionArray.indexOf(countryName)>-1)
-  {
-    if(arr[indexArr[1]]=="")
-    fatArray[1]+=0;
-    else
-    fatArray[1]+=parseFloat(arr[indexArr[1]]);
+    else if(CEregionArray.indexOf(countryName)>-1)
+    {
+      if(arr[indexArr[1]]=="")
+      fatArray[1]+=0;
+      else
+      fatArray[1]+=parseFloat(arr[indexArr[1]]);
 
-    if(arr[indexArr[2]]=="")
-    carbArray[1]+=0;
-    else
-    carbArray[1]+=parseFloat(arr[indexArr[2]]);
+      if(arr[indexArr[2]]=="")
+      carbArray[1]+=0;
+      else
+      carbArray[1]+=parseFloat(arr[indexArr[2]]);
 
-   if(arr[indexArr[3]]=="")
-   proteinArray[1]+=0;
-   else
-   proteinArray[1]+=parseFloat(arr[indexArr[3]]);
-  }
-  else if(SEregionArray.indexOf(countryName)>-1)
-  {
-    if(arr[indexArr[1]]=="")
-    fatArray[2]+=0;
-    else
-    fatArray[2]+=parseFloat(arr[indexArr[1]]);
+      if(arr[indexArr[3]]=="")
+      proteinArray[1]+=0;
+      else
+      proteinArray[1]+=parseFloat(arr[indexArr[3]]);
+    }
+    else if(SEregionArray.indexOf(countryName)>-1)
+    {
+      if(arr[indexArr[1]]=="")
+      fatArray[2]+=0;
+      else
+      fatArray[2]+=parseFloat(arr[indexArr[1]]);
 
-    if(arr[indexArr[2]]=="")
-    carbArray[2]+=0;
-    else
-    carbArray[2]+=parseFloat(arr[indexArr[2]]);
+      if(arr[indexArr[2]]=="")
+      carbArray[2]+=0;
+      else
+      carbArray[2]+=parseFloat(arr[indexArr[2]]);
 
-   if(arr[indexArr[3]]=="")
-   proteinArray[2]+=0;
-   else
-   proteinArray[2]+=parseFloat(arr[indexArr[3]]);
-  }
-}//else ends
+      if(arr[indexArr[3]]=="")
+      proteinArray[2]+=0;
+      else
+      proteinArray[2]+=parseFloat(arr[indexArr[3]]);
+    }
+  }//else ends
 }//lineReadFunction ends
 /*--------line event----*/
 rlemitter.on("line",lineReadFunction);
 /*--------close event----*/
 rlemitter.on("close",function(){
-   sep="";
+  sep="";
   for(i=0;i<RegionArray.length;i++)
   {
     var ob={
